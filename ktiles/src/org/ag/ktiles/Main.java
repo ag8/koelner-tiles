@@ -54,24 +54,29 @@ public class Main {
             for (int j = 0; j < yDim; j++) {
 //                System.out.println("On rhombus " + (i * 1000 + j) + ".");
                 Rhombus c = koelnerTile.get(getIndex(koelnerTile, new int[]{i, j}));
-                if (c.getValue() != 0) {
+//                if (c.getValue() != 0) {
                     writer.print(c.getValue() + " ");
-                } else {
-                    writer.print("  ");
-                }
+//                } else {
+//                    writer.print("  ");
+//                }
             }
             writer.println();
         }
         writer.println("____________________________");
         writer.println();
-        List<String> list = Files.readAllLines(new File("C:\\development\\koelner\\ktiles\\src\\org\\ag\\ktiles\\Main.java").toPath(), Charset.defaultCharset());
+        List<String> list = Files.readAllLines(new File("C:\\development\\koelner-tiles\\ktiles\\src\\org\\ag\\ktiles\\Main.java").toPath(), Charset.defaultCharset());
         list.forEach(writer::println);
         writer.close();
     }
 
+    int c = 0;
     private List<Rhombus> step(List<Rhombus> koelnerTile) {
-        System.out.println("Current coordinates are " + Arrays.toString(currentRhombus) + ".");
-        System.out.println("Current direction is " + currentDir + ".");
+        c++;
+        if (c % 10000 == 0) {
+            System.out.println("Finished " + c + " iterations.");
+        }
+//        System.out.println("Current coordinates are " + Arrays.toString(currentRhombus) + ".");
+//        System.out.println("Current direction is " + currentDir + ".");
 
         int currentIndex = getIndex(koelnerTile, currentRhombus);
         Rhombus current;
@@ -84,7 +89,7 @@ public class Main {
         current.increment();
 
         ImmutablePair<Integer, Integer> neighborCoords = current.getNeighbor(currentDir);
-        System.out.println("Neighbor's coordinates are " + neighborCoords + ".");
+//        System.out.println("Neighbor's coordinates are " + neighborCoords + ".");
 
         // If the neighbor exists, switch to it
         if (neighborCoords != null) {

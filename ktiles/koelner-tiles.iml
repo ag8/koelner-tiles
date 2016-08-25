@@ -17,5 +17,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="pngj-2.1.1-javadoc" level="project" />
   </component>
 </module>
